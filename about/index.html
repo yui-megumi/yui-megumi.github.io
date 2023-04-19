@@ -492,7 +492,7 @@
                     <div class="col s12 m12 l4">
                         <div class="profile center-align">
                             <div class="avatar">
-                                <img src="/medias/avatar.jpg" alt="John Doe"
+                                <img src="/medias/avatar2.jpg" alt="John Doe"
                                      class="circle responsive-img avatar-img">
                             </div>
                             <div class="author">
@@ -1290,6 +1290,15 @@ $(function () {
 
     
     
+    
+        
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
+            }
+        </script>
     
 
     <!-- 雪花特效 -->
