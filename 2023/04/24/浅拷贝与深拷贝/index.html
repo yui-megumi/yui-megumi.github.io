@@ -316,7 +316,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2023-04-24
+                    2023-12-08
                 </div>
                 
 
@@ -365,7 +365,7 @@
 <h3 id="分析原因如下："><a href="#分析原因如下：" class="headerlink" title="分析原因如下："></a>分析原因如下：</h3><p>这是由于上面的代码，如果不写拷贝构造函数，系统自动提供一个拷贝构造函数把数据进行<strong>浅拷贝</strong>，系统在这时只会开辟一个堆空间，这时候进行析构函数的delete操作会多释放一个堆空间造成非法操作，<strong>因为多释放的堆区根本就不存在！</strong>     </p>
 <p>浅拷贝带来的问题：<strong>堆空间的重复释放</strong>，要利用<strong>深拷贝</strong>解决。  </p>
 <p>这时就要构造一个拷贝构造函数，进行深拷贝操作开辟两个堆空间，添加到class类中，代码如下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Person</span>(<span class="type">const</span> Person &amp;p) &#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;拷贝函数的调用&quot;</span> &lt;&lt; endl;</span><br><span class="line">		m_Age = p.m_Age;  </span><br><span class="line">		<span class="comment">//m_Height = p.m_Height;   系统执行的就是这段代码，我们把它注释掉</span></span><br><span class="line">		<span class="comment">//深拷贝操作：</span></span><br><span class="line">		m_Height = <span class="keyword">new</span> <span class="built_in">int</span>(*p.m_Height);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Person(const Person &amp;p) &#123;</span><br><span class="line">		cout &lt;&lt; &quot;拷贝函数的调用&quot; &lt;&lt; endl;</span><br><span class="line">		m_Age = p.m_Age;  </span><br><span class="line">		//m_Height = p.m_Height;   系统执行的就是这段代码，我们把它注释掉</span><br><span class="line">		//深拷贝操作：</span><br><span class="line">		m_Height = new int(*p.m_Height);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 
 
 
