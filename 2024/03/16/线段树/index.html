@@ -4,10 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="浅拷贝与深拷贝, Yui&#39;s blog">
-    <meta name="description" content="C++中深拷贝与浅拷贝的不同 💖1.浅拷贝😶‍🌫️浅拷贝是指直接用系统提供的拷贝构造函数进行的简单赋值拷贝操作
-2.深拷贝😶‍🌫️深拷贝是指在堆区中重新申请空间，进行拷贝操作
-3.代码示例🤯构造一个Person类，其中构造函数可">
+    <meta name="keywords" content="线段树, Yui&#39;s blog">
+    <meta name="description" content="线段树介绍🌳线段树是具有树的数据结构，用于处理区间问题，并拥有O(log n)级别时间复杂度的算法。
+1.1 分块思想线段树利用到了分块思想，那分块思想是什么呢？简单来说，分块思想是将一段序列分为有穷个小块，当我们要查询某一个区间的和时，">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>浅拷贝与深拷贝 | Yui&#39;s blog</title>
+    <title>线段树 | Yui&#39;s blog</title>
     <link rel="icon" type="image/png" href="/logo2.png">
     
     <style>
@@ -260,12 +259,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/29.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/28.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">浅拷贝与深拷贝</h1>
+                    <h1 class="description center-align post-title">线段树</h1>
                 </div>
             </div>
         </div>
@@ -293,8 +292,8 @@
                                 <span class="chip bg-color">C++</span>
                             </a>
                         
-                            <a href="/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/">
-                                <span class="chip bg-color">程序设计基础</span>
+                            <a href="/tags/%E9%AB%98%E7%BA%A7%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">高级算法</span>
                             </a>
                         
                     </div>
@@ -305,8 +304,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-category">
-                                基础知识
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                算法
                             </a>
                         
                     </div>
@@ -318,28 +317,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2023-04-24
+                    2024-03-16
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2023-12-08
+                    2024-03-18
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    701
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    2 Min
+                    5 Min
                 </div>
                 
 
@@ -359,28 +358,37 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="C-中深拷贝与浅拷贝的不同-💖"><a href="#C-中深拷贝与浅拷贝的不同-💖" class="headerlink" title="C++中深拷贝与浅拷贝的不同 💖"></a>C++中深拷贝与浅拷贝的不同 💖</h1><h2 id="1-浅拷贝😶‍🌫️"><a href="#1-浅拷贝😶‍🌫️" class="headerlink" title="1.浅拷贝😶‍🌫️"></a>1.浅拷贝😶‍🌫️</h2><p>浅拷贝是指直接用系统提供的拷贝构造函数进行的简单赋值拷贝操作</p>
-<h2 id="2-深拷贝😶‍🌫️"><a href="#2-深拷贝😶‍🌫️" class="headerlink" title="2.深拷贝😶‍🌫️"></a>2.深拷贝😶‍🌫️</h2><p>深拷贝是指在堆区中重新申请空间，进行拷贝操作</p>
-<h2 id="3-代码示例🤯"><a href="#3-代码示例🤯" class="headerlink" title="3.代码示例🤯"></a>3.代码示例🤯</h2><p>构造一个Person类，其中构造函数可以发生函数重载：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line">	//普通构造函数</span><br><span class="line">	Person() &#123;</span><br><span class="line">		cout &lt;&lt; &quot;这是普通构造函数调用&quot; &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//有参构造函数</span><br><span class="line">	Person(int age,int height) &#123;</span><br><span class="line">		m_Age = age;</span><br><span class="line">		m_Height = new int(height);  // 开辟一片堆空间</span><br><span class="line">		cout &lt;&lt; &quot;这是有参构造函数调用&quot; &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">	int m_Age;</span><br><span class="line">	int* m_Height;//创建身高指针，开辟到堆区</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+                <h1 id="线段树介绍🌳"><a href="#线段树介绍🌳" class="headerlink" title="线段树介绍🌳"></a>线段树介绍🌳</h1><p>线段树是具有树的数据结构，用于处理区间问题，并拥有O(log n)级别时间复杂度的算法。</p>
+<h2 id="1-1-分块思想"><a href="#1-1-分块思想" class="headerlink" title="1.1 分块思想"></a>1.1 分块思想</h2><p>线段树利用到了分块思想，那分块思想是什么呢？简单来说，分块思想是将一段序列分为有穷个小块，当我们要查询某一个区间的和时，我们总是可以表示成k个分块与m个单个元素的并。线段树在分块思想的基础上，将每一个“块”利用树的数据结构储存，提高了查找效率与修改效率。</p>
+<h2 id="1-2-线段树的限制"><a href="#1-2-线段树的限制" class="headerlink" title="1.2 线段树的限制"></a>1.2 线段树的限制</h2><p>1.在最坏的情况下，线段树合并的时间次数是要大于分块的合并次数 n^1/2。</p>
+<p>2.线段树只能用于维护带有结合律的信息，例如区间最值、区间和、区间异或这类，如果不带有结合律，则不能用线段树维护。但是分块要灵活的多，可以维护很多别的东西，功能性强。</p>
+<p>3.越暴力的算法可以支持的操作越多，功能性越强。</p>
+<h1 id="线段树的构造实现✨"><a href="#线段树的构造实现✨" class="headerlink" title="线段树的构造实现✨"></a>线段树的构造实现✨</h1><h2 id="2-1-建树与维护"><a href="#2-1-建树与维护" class="headerlink" title="2.1 建树与维护"></a>2.1 建树与维护</h2><p>由二叉树的性质可知，对于一个节点u，它的左儿子为2 * u，它的右儿子为2 * u + 1。</p>
+<p>我们根据这个性质，写一个查找左右儿子的函数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">inline int ls(int u)&#123;return u&lt;&lt;1;&#125;//左儿子</span><br><span class="line">inline int rs(int u)&#123;return u&lt;&lt;1|1;&#125;//右儿子</span><br><span class="line">//inline 可以有效防止无需入栈的信息入栈，节省时间和空间</span><br></pre></td></tr></table></figure>
 
-<p>在其中添加析构函数，析构函数用于释放我们在堆区中开辟的空间：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">~Person() &#123;</span><br><span class="line">		//析构函数通常会将我们在堆区开辟的数据自动释放掉</span><br><span class="line">		if (m_Height != NULL) &#123;</span><br><span class="line">			delete m_Height;</span><br><span class="line">			m_Height = NULL;</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; &quot;这是析构函数的调用&quot; &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>有了这个之后，我们根据要维护的节点，来维护线段树</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void pushup_sum(int u)&#123;</span><br><span class="line">    t[u]=t[ls(u)]+t[rs(u)];</span><br><span class="line">&#125;//向上维护区间和</span><br><span class="line"></span><br><span class="line">void pushup_min(int u)&#123;//维护区间最大值最小值</span><br><span class="line">    t[u]=min(t[ls(u)],t[rs(u)]);//返回最小值</span><br><span class="line">    //t[u]=maxt[ls(u)],t[rs(u)]);//返回最大值 如果有需要</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>这时候创建test01函数，用于检验我们的代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">void test01() &#123;                            //这时候没有拷贝构造函数</span><br><span class="line">	Person p1(18,160);                     //系统为我们自动提供拷贝构造函数</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; &quot;P1的年龄为： &quot; &lt;&lt; p1.m_Age &lt;&lt; endl;</span><br><span class="line">	</span><br><span class="line">	Person p2(p1);</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; &quot;P2的年龄为： &quot; &lt;&lt; p2.m_Age &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有了pushup，我们就可以根据它来递归建树了。在电脑中的递归实际上是先向底层递归，然后从底层向上回溯，所以开始递归时，必然先去整合子节点的信息，由此我们就验证了递归建树的正确性。</p>
+<p>从这里可以看出，线段树必须要满足结合律，因为它包括了pushup这个函数。</p>
+<p>以下是递归建树的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#define ll long long</span><br><span class="line">void build(ll u,ll l,ll r)&#123;</span><br><span class="line">    if(l==r)&#123;t[u]=a[l];return;&#125;//t数组为要维护的信息，a为读入的数据</span><br><span class="line">    ll mid=(l+r)&gt;&gt;1;</span><br><span class="line">    build(ls(u),l,mid);</span><br><span class="line">    build(rs(u),mid+1,r);</span><br><span class="line">    pushup(u);//在回溯时维护，pushup可以是你任何想维护的操作</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>在main中调用test01函数，<strong>发现程序出现错误</strong>  。</p>
-<h3 id="分析原因如下："><a href="#分析原因如下：" class="headerlink" title="分析原因如下："></a>分析原因如下：</h3><p>这是由于上面的代码，如果不写拷贝构造函数，系统自动提供一个拷贝构造函数把数据进行<strong>浅拷贝</strong>，系统在这时只会开辟一个堆空间，这时候进行析构函数的delete操作会多释放一个堆空间造成非法操作，<strong>因为多释放的堆区根本就不存在！</strong>     </p>
-<p>浅拷贝带来的问题：<strong>堆空间的重复释放</strong>，要利用<strong>深拷贝</strong>解决。  </p>
-<p>这时就要构造一个拷贝构造函数，进行深拷贝操作开辟两个堆空间，添加到class类中，代码如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Person(const Person &amp;p) &#123;</span><br><span class="line">		cout &lt;&lt; &quot;拷贝函数的调用&quot; &lt;&lt; endl;</span><br><span class="line">		m_Age = p.m_Age;  </span><br><span class="line">		//m_Height = p.m_Height;   系统执行的就是这段代码，我们把它注释掉</span><br><span class="line">		//深拷贝操作：</span><br><span class="line">		m_Height = new int(*p.m_Height);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>自此，我们就递归建立好了线段树。</p>
+<h2 id="2-2-区间修改"><a href="#2-2-区间修改" class="headerlink" title="2.2 区间修改"></a>2.2 区间修改</h2><p>因为单点修改是区间修改的子问题，即区间长度为1的修改，所以我们在这里不再讨论单点修改。</p>
+<p>对于区间操作，我们引入一个概念——**懒标记(lazy tag)**。为什么我们叫他懒标记呢，这是因为原本我们修改区间时需要通过先改变叶子节点的值，然后不断向上递归修改祖先的节点，时间复杂度最高可以达到O(nlog n)。当我们引入懒标记之后，区间复杂度降到了O(log n)。</p>
+<p>具体来说，懒标记的作用时记录每次每个节点要更新的值。在此我们利用到了线段树的优点——传递式记录。</p>
+<p>也就是说，当我们修改整个区间时，我们将懒标记记录在公共祖先节点上；只修改一部分，那么我们就记录在这公共部分的祖先上。</p>
+<p>此时，因为我们要向下传导，我们引入一个新的pushdown函数，如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">inline void maketag(ll u,ll l,ll r,ll k)&#123;//k为要加的值</span><br><span class="line">    tag[u]=tag[u]+k;</span><br><span class="line">    t[u]=t[u]+k*(r-l+1);</span><br><span class="line">    //tag为懒标记数组</span><br><span class="line">&#125;</span><br><span class="line">//我们可以看出，maketag函数唯一的目的是记录当前节点所代表的区间</span><br><span class="line">inline void pushdown(ll u,ll l,ll r)&#123;</span><br><span class="line">    ll mid=(l+r)&gt;&gt;1;</span><br><span class="line">    f(ls(u),l,mid,tag[u]);</span><br><span class="line">    f(rs(u),mid+1,tag[u]);</span><br><span class="line">    tag[u]=0;</span><br><span class="line">    //每次更新两个子节点，然后向下传递</span><br><span class="line">&#125;</span><br><span class="line">//查询要修改的区间</span><br><span class="line">bool InRange(ll L,ll R,ll l,ll r)&#123;</span><br><span class="line">    return (l&lt;=L)&amp;&amp;(r&gt;=R);</span><br><span class="line">&#125;</span><br><span class="line">bool OutofRange(ll L,ll R,ll l,ll r)&#123;</span><br><span class="line">    return (L&gt;r)||(R&lt;l);</span><br><span class="line">&#125;</span><br><span class="line">//更新</span><br><span class="line">inline void update(ll u,ll L,ll R,ll l,ll r,ll k)&#123;</span><br><span class="line">    if(InRange（L,R,l,r)&#123;</span><br><span class="line">        maketag(u,L,R,k);</span><br><span class="line">    &#125;else if(!OutofRange(L,R,l,r))&#123;</span><br><span class="line">        int mid=(L+R)&gt;&gt;1;</span><br><span class="line">        pushdown(u,L,R);//将当前节点的标记往下传递</span><br><span class="line">        update(ls(u),L,M,l,r,k);</span><br><span class="line">        update(rs(u),M+1,R,l,r,k);</span><br><span class="line">        pushup(u);//记得更新值</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h2 id="2-3-区间查询"><a href="#2-3-区间查询" class="headerlink" title="2.3 区间查询"></a>2.3 区间查询</h2><p>最后，我们就可以进行对区间的查询了，代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ll query(ll u,ll L,ll R,ll l,ll r,ll k)&#123;</span><br><span class="line">     if(InRange（L,R,l,r)&#123;</span><br><span class="line">        return t[u];</span><br><span class="line">    &#125;else if(!OutofRange(L,R,l,r))&#123;</span><br><span class="line">        int mid=(L+R)&gt;&gt;1;</span><br><span class="line">        pushdown(u,L,R);//查询的时候也要将当前节点的标记往下传递</span><br><span class="line">        return query(ls(u),L,M,l,r)+query(rs(u),M+1,R,l,r);</span><br><span class="line">    &#125;else return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-<p>这样就完全解决了浅拷贝带来的指针重复指向同一堆区资源，执行释放代码delete时堆区资源重复释放的问题。</p>
-<h2 id="4-小结"><a href="#4-小结" class="headerlink" title="4.小结"></a>4.小结</h2><p>C++中浅拷贝与深拷贝是容易混淆的点，但加以区分还是能很好辨认，故在编写代码时，要格外注意这一点。</p>
-<p>请戳下面评论区，与我互相交流（需科学上网）</p>
+<p>由此，我们就实现了线段树的主要功能，在面对具体算法题目时，需要灵活运用线段树。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>1.《深入浅出程序设计竞赛》进阶篇</p>
+<p>2.洛谷P3372题解，皎月半洒花</p>
 
                 
             </div>
@@ -407,7 +415,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://yui-megumi.github.io/2023/04/24/%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/">https://yui-megumi.github.io/2023/04/24/%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/</a>
+                    <a href="https://yui-megumi.github.io/2024/03/16/%E7%BA%BF%E6%AE%B5%E6%A0%91/">https://yui-megumi.github.io/2024/03/16/%E7%BA%BF%E6%AE%B5%E6%A0%91/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -449,8 +457,8 @@
                                     <span class="chip bg-color">C++</span>
                                 </a>
                             
-                                <a href="/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/">
-                                    <span class="chip bg-color">程序设计基础</span>
+                                <a href="/tags/%E9%AB%98%E7%BA%A7%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">高级算法</span>
                                 </a>
                             
                         </div>
@@ -740,9 +748,64 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2024/03/16/%E7%BA%BF%E6%AE%B5%E6%A0%91/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/28.png" class="responsive-img" alt="线段树">
+                        
+                        <span class="card-title">线段树</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%AB%98%E7%BA%A7%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">高级算法</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2023/11/08/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93/">
                     <div class="card-image">
@@ -760,9 +823,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-11-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-08
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -784,51 +847,6 @@
                     
                     <a href="/tags/mysql/">
                         <span class="chip bg-color">mysql</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2023/04/19/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/29.png" class="responsive-img" alt="我的第一篇博客">
-                        
-                        <span class="card-title">我的第一篇博客</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-19
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            Yui-Megumi
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E4%B8%AA%E4%BA%BA/">
-                        <span class="chip bg-color">个人</span>
                     </a>
                     
                 </div>

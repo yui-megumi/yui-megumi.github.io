@@ -324,7 +324,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2023-12-23
+                    2024-03-16
                 </div>
                 
 
@@ -360,7 +360,7 @@
             <div id="articleContent">
                 <h1 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h1><p>实际上是一张虚拟的表，对sql语句的封装</p>
 <p>使用视图的优点:<br>1.<strong>简化数据操作</strong>:视图可以简化用户处理数据的方式<br>2.<strong>着重于特定数据</strong>:不必要的数据或敏感数据可以不出现在视图中。<br>3.视图提供了一个简单而有效的安全机制，可以定制不同用户对数据的访问权限。<br>4.<strong>提供向后兼容性</strong>:视图使用户能够在表的架构更改时为表创建向后兼容接口</p>
-<h2 id="1-基本语法"><a href="#1-基本语法" class="headerlink" title="1.基本语法"></a>1.基本语法</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> [<span class="keyword">OR</span> REPLACE] [FORCE] <span class="keyword">view</span> view_name</span><br><span class="line"><span class="keyword">as</span> subquery</span><br><span class="line">[<span class="keyword">WITH</span> <span class="keyword">CHECK</span> OPTION]</span><br><span class="line">[<span class="keyword">WITH</span> READ <span class="keyword">ONLY</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="1-基本语法"><a href="#1-基本语法" class="headerlink" title="1.基本语法"></a>1.基本语法</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create [OR REPLACE] [FORCE] view view_name</span><br><span class="line">as subquery</span><br><span class="line">[WITH CHECK OPTION]</span><br><span class="line">[WITH READ ONLY]</span><br></pre></td></tr></table></figure>
 
 <p>**[OR REPLACE]**：若所创建的试图已经存在，ORACLE 自动重建该视图;</p>
 <p>**[FORCE]**：不管基表是否存在ORACLE 都会自动创建该视图</p>
@@ -860,18 +860,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2023/11/08/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                <a href="/2024/03/16/%E7%BA%BF%E6%AE%B5%E6%A0%91/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/25.png" class="responsive-img" alt="Oracle数据库基本知识">
+                        <img src="/medias/featureimages/28.png" class="responsive-img" alt="线段树">
                         
-                        <span class="card-title">Oracle数据库基本知识</span>
+                        <span class="card-title">线段树</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -881,31 +880,30 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-08
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-03-16
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                    Oracle数据库
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/oracle/">
-                        <span class="chip bg-color">oracle</span>
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
                     </a>
                     
-                    <a href="/tags/mysql/">
-                        <span class="chip bg-color">mysql</span>
+                    <a href="/tags/%E9%AB%98%E7%BA%A7%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">高级算法</span>
                     </a>
                     
                 </div>
@@ -1019,8 +1017,6 @@
 
 
 <!-- 代码块复制 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
 
 
 <!-- 代码块收缩 -->
@@ -1177,7 +1173,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2023</span>
+                <span id="year">2023-2024</span>
             
             <a href="/about" target="_blank">Yui-Megumi</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
@@ -1186,7 +1182,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">3k</span>
+                        class="white-color">4.5k</span>
             
             
             
