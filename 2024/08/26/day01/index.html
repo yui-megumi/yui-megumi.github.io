@@ -4,8 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="books, Yui&#39;s blog">
-    <meta name="description" content="Yui&#39;s blog">
+    <meta name="keywords" content="Yui&#39;s blog">
+    <meta name="description" content="一、C中的可执行程序是如何生成的对于一个C语言源文件，我们需要四个步骤将它转换成计算机可以执行的形式。
+
+在C/C++中，编译单元为源文件。也就是说我们会对每一个源文件进行编译，生成对应的目标文件。然后将多个目标文件链接在一起，生成可执行程">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>books | Yui&#39;s blog</title>
+    <title>Yui&#39;s blog</title>
     <link rel="icon" type="image/png" href="/logo2.png">
     
     <style>
@@ -258,12 +260,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/27.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/25.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">books</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -299,21 +301,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2023-04-19
+                    2024-08-26
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2023-04-19
+                    2024-08-26
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    0
+                    496
                 </div>
                 
 
@@ -340,7 +342,28 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="一、C中的可执行程序是如何生成的"><a href="#一、C中的可执行程序是如何生成的" class="headerlink" title="一、C中的可执行程序是如何生成的"></a>一、C中的可执行程序是如何生成的</h2><p>对于一个C语言源文件，我们需要四个步骤将它转换成计算机可以执行的形式。</p>
+<p><img src="C:\Users\Roxy\AppData\Roaming\Typora\typora-user-images\image-20240826203305533.png" alt="111"></p>
+<p>在C/C++中，编译单元为源文件。也就是说我们会对每一个源文件进行编译，生成对应的目标文件。然后将多个目标文件链接在一起，生成可执行程序。</p>
+<h3 id="1-预处理"><a href="#1-预处理" class="headerlink" title="1.预处理"></a>1.预处理</h3><p>首先程序会由预处理器（preprocessor）进行处理，预处理器执行以**’#’**开头的指令（预处理指令）。预处理指令一般都比较简单：比如将头文件中内容复制到源代码中，或者是对宏进行文本替换。</p>
+<p><img src="C:\Users\Roxy\AppData\Roaming\Typora\typora-user-images\image-20240826203807173.png" alt="image-20240826203807173"></p>
+<ul>
+<li><strong>#include</strong>:头文件包含（把头文件中的内容复制到指令所在位置）</li>
+<li><strong>#define N 5</strong>:宏定义（简单的文本替换）</li>
+<li><strong>#define FOO(x) (1+(x)*(x))</strong>:宏函数（本质上还是文本替换，注意括号）</li>
+</ul>
+<p>预处理之后将生成**’.i’**文件。</p>
+<h3 id="2-编译"><a href="#2-编译" class="headerlink" title="2.编译"></a>2.编译</h3><p>经过预处理的文件将会被编译器编译，编译器会将程序翻译成对应平台的汇编代码。</p>
+<p>编译之后将生成**’.s’**文件的汇编代码。</p>
+<h3 id="3-汇编"><a href="#3-汇编" class="headerlink" title="3.汇编"></a>3.汇编</h3><p>汇编器会将汇编代码翻译成对应平台的机器代码（目标代码）。</p>
+<p>汇编之后将生成**’.o’**的目标文件。</p>
+<h3 id="4-链接"><a href="#4-链接" class="headerlink" title="4.链接"></a>4.链接</h3><p>在链接阶段，链接器会把由汇编器生成的目标代码和程序需要的其他附加代 码整合在一起，生成最终可执行的程序。</p>
+<p>这些附加代码包括程序中用到的库函数。</p>
+<h2 id="二、进程虚拟内存空间"><a href="#二、进程虚拟内存空间" class="headerlink" title="二、进程虚拟内存空间"></a>二、进程虚拟内存空间</h2><p>生成的可执行文件被操作性系统加载到内存，程序才能运行。运行的程序我们称之为<strong>进程</strong>，每个进程都有自己的寻你内存空间。简化图如下所示。</p>
+<img src="C:\Users\Roxy\AppData\Roaming\Typora\typora-user-images\image-20240826205947061.png" alt="image-20240826205947061" style="zoom:50%;" />
+
+<p>从上到下分别是内核、栈、堆、数据、代码。</p>
+
                 
             </div>
             <hr/>
@@ -366,7 +389,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://yui-megumi.github.io/books/index.html">https://yui-megumi.github.io/books/index.html</a>
+                    <a href="https://yui-megumi.github.io/2024/08/26/day01/">https://yui-megumi.github.io/2024/08/26/day01/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -696,13 +719,13 @@
                 <i class="far fa-dot-circle"></i>&nbsp;Current
             </div>
             <div class="card">
-                <a href="/books/index.html">
+                <a href="/2024/08/26/day01/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/27.png" class="responsive-img" alt="books">
+                        <img src="/medias/featureimages/25.png" class="responsive-img" alt="">
                         
-                        <span class="card-title">books</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -713,7 +736,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-08-26
                             </span>
                         <span class="publish-author">
                             
@@ -731,16 +754,16 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/books/index.html">
+                <a href="/2024/03/16/%E7%BA%BF%E6%AE%B5%E6%A0%91/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/27.png" class="responsive-img" alt="books">
+                        <img src="/medias/featureimages/28.png" class="responsive-img" alt="线段树">
                         
-                        <span class="card-title">books</span>
+                        <span class="card-title">线段树</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -751,17 +774,32 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-16
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Yui-Megumi
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E9%AB%98%E7%BA%A7%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">高级算法</span>
+                    </a>
+                    
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
